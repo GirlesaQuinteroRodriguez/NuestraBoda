@@ -1,0 +1,41 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+  }
+
+header {
+ display: flex;
+ justify-content: space-between;
+ height: 33vh;
+ width: 100vw;
+ background-image: url('./imgDesktop/header\ desktop2.png'); /* Ruta de la imagen de fondo */
+ background-size: cover; /* La imagen de fondo cubrirá todo el contenedor */
+ background-position: center; /* Centra la imagen de fondo */
+}
+
+.headerLogo {
+  height: 15vh;
+  width: 15vw;
+
+}
+
+.headerLogo img {
+  max-width: 100%;
+  height: auto; 
+  display: block;
+}
+
+.menu {
+  text-align: right; /* Alinea los elementos de la lista a la derecha */
+  padding: 5rem; /* Añade relleno para que los elementos de la lista no estén pegados al borde */
+}
+
+.menu ul {
+  list-style-type: none; /* Quita los bullets de la lista */
+}
+
+.menu li {
+  display: inline-block; /* Para que los elementos de la lista estén en línea */
+  margin-left: 3rem; /* Espacio entre los elementos de la lista */
+}
