@@ -9,7 +9,6 @@ header {
  display: flex;
  justify-content: space-between;
  height: 33vh;
- width: 100vw;
  background-image: url('./imgDesktop/header\ desktop2.png'); /* Ruta de la imagen de fondo */
  background-size: cover; /* La imagen de fondo cubrirá todo el contenedor */
  background-position: center; /* Centra la imagen de fondo */
@@ -51,7 +50,6 @@ header {
   justify-content:center ;
   align-content: center;
   height: 60vh;
-  width: 100vw;
   margin-top: 4rem;
   margin-bottom: 4rem;
 }
