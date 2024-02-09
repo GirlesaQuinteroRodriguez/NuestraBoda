@@ -4,6 +4,7 @@
     box-sizing: border-box;
   }
 
+
 header {
  display: flex;
  justify-content: space-between;
@@ -27,18 +28,23 @@ header {
 }
 
 .menu {
-  text-align: right; /* Alinea los elementos de la lista a la derecha */
-  padding: 5rem; /* Añade relleno para que los elementos de la lista no estén pegados al borde */
+  text-align: center; 
+  padding-right: 7rem;
+  padding-top: 27vh;
+  font-family: 'Kameron', serif;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color:#74897d ;
 }
 
 .menu ul {
-  list-style-type: none; /* Quita los bullets de la lista */
+  list-style-type: none; 
 }
 
 .menu li {
   display: inline-block; /* Para que los elementos de la lista estén en línea */
-  margin-left: 3rem; /* Espacio entre los elementos de la lista */
-}
+  margin-left: 4rem; /* Espacio entre los elementos de la lista */
+  }
 
 .invite {
   display: flex;
