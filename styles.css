@@ -76,25 +76,69 @@ header {
 }
 
 .mensaje{
-  justify-content:center ;
-  align-content: center;
   text-align: center;
-  line-height: 4rem;
+  line-height: 2rem;
   margin-bottom: 4rem;
+  width: 70vw;
+  margin-left: 15vw;
+}
+
+.explicacion{
+  font-family: 'Kameron', serif;
+  font-size: 1.5rem;
+  padding-bottom:4rem;
+  padding-top: 4rem;
+}
+
+.verse span {
+  font-size: 2rem;
+  font-family: 'Tangerine', cursive;
+  font-weight: 700;
+  color:#74897d ;
+}
+
+.verse{
+  font-size: 3rem;
+  font-family: 'Tangerine', cursive;
+  font-weight: 400;
+  line-height: 3rem;
 }
 
 .datos{
+  font-family: 'Kameron', serif;
   justify-content:center ;
   align-content: center;
   text-align: center;
-  line-height: 4rem;
+  line-height: 2rem;
   margin-bottom: 4rem;
+  font-size: 1.2rem;
+}
+
+.fecha{
+  font-weight: 700;
+  color:#74897d ;
+  font-size: 2rem;
+  padding-bottom: 1rem;
+  padding-top: 2rem;
+
 }
 
 .vestuario{
+  font-family: 'Kameron', serif;
   justify-content:center ;
   align-content: center;
   text-align: center;
-  line-height: 4rem;
+  line-height: 2rem;
   margin-bottom: 4rem;
+  font-size: 1.2rem;
+}
+
+.vestuario span{
+  font-weight: 700;
+  color:#74897d ;
+}
+
+.titulov{
+  font-weight: 700;
+  color:#74897d ;
 }
