@@ -14,16 +14,6 @@ header {
  background-position: center; /* Centra la imagen de fondo */
 }
 
-.invite {
-  display: flex;
-  justify-content: space-between;
-}
-
-.invitecenter p {
-  font-family: 'Tangerine', cursive;
-  font-weight: 700;
-}
-
 .headerLogo {
   height: 15vh;
   width: 15vw;
@@ -48,4 +38,63 @@ header {
 .menu li {
   display: inline-block; /* Para que los elementos de la lista estén en línea */
   margin-left: 3rem; /* Espacio entre los elementos de la lista */
+}
+
+.invite {
+  display: flex;
+  justify-content:center ;
+  align-content: center;
+  height: 60vh;
+  width: 100vw;
+  margin-top: 4rem;
+  margin-bottom: 4rem;
+}
+
+.invite img {
+  max-width: 100%;
+  height: auto; 
+  display: block;
+}
+
+.invitecenter {
+  padding-top:7rem;
+  text-align: center;
+  line-height: 4rem;
+}
+
+.invitecenter p {
+  font-family: 'Tangerine', cursive;
+  font-weight: 700;
+  font-size: 6rem;
+}
+
+.invitecenter span {
+  font-family: 'Tangerine', cursive;
+  font-weight: 700;
+  font-size: 3rem;
+
+}
+
+.mensaje{
+  justify-content:center ;
+  align-content: center;
+  text-align: center;
+  line-height: 4rem;
+  margin-bottom: 4rem;
+}
+
+.datos{
+  justify-content:center ;
+  align-content: center;
+  text-align: center;
+  line-height: 4rem;
+  margin-bottom: 4rem;
+}
+
+.vestuario{
+  justify-content:center ;
+  align-content: center;
+  text-align: center;
+  line-height: 4rem;
+  margin-bottom: 4rem;
 }
