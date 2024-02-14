@@ -61,7 +61,7 @@ header {
 }
 
 .invitecenter {
-  padding-top:7rem;
+  padding-top:6rem;
   text-align: center;
   line-height: 4rem;
 }
@@ -79,13 +79,42 @@ header {
 
 }
 
-.mensaje{
-  text-align: center;
-  line-height: 2rem;
-  margin-bottom: 4rem;
-  width: 70vw;
-  margin-left: 15vw;
+#leftG {
+  margin-top:4rem;
+  height: 100vh;
+  display: block;
+  float: left;
+  opacity: 0.3;
+  z-index: -1;
+  
 }
+
+#rightG {
+  margin-top:4rem;
+  height: 100vh;
+  display: block;
+  float: right;
+  z-index: -1;
+  
+}
+
+.segundaParte .mensaje {
+  position: absolute;
+  top: 140vh;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1; /* Posiciona el mensaje delante de las imágenes */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  width: 70vw;
+  height: auto;
+  min-height: 200px; /* Ajusta el valor según tu contenido */
+  line-height: 2rem;
+}
+
 
 .explicacion{
   font-family: 'Kameron', serif;
@@ -106,6 +135,9 @@ header {
   font-family: 'Tangerine', cursive;
   font-weight: 400;
   line-height: 3rem;
+  justify-content:center ;
+  align-content: center;
+  text-align: center;
 }
 
 .datos{
@@ -113,7 +145,17 @@ header {
   justify-content:center ;
   align-content: center;
   text-align: center;
-  line-height: 2rem;
+  position: absolute;
+  top: 180vh;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1; /* Posiciona el mensaje delante de las imágenes */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 70vw;
+  height: auto;
   margin-bottom: 4rem;
   font-size: 1.2rem;
 }
@@ -129,10 +171,24 @@ header {
 
 .vestuario{
   font-family: 'Kameron', serif;
+  line-height: 2rem;
+  margin-bottom: 4rem;
+  font-size: 1.2rem;
+  font-family: 'Kameron', serif;
   justify-content:center ;
   align-content: center;
   text-align: center;
-  line-height: 2rem;
+  position: absolute;
+  top: 210vh;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1; /* Posiciona el mensaje delante de las imágenes */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 70vw;
+  height: auto;
   margin-bottom: 4rem;
   font-size: 1.2rem;
 }
