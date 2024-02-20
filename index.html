@@ -60,26 +60,37 @@
             </div>           
     </div>
     <div class="containerasis">
-        <div id="asistencia">
-            <h1>Formulario de asistencia</h1>
-                <form action="/submit" method="post">
-                    <label for="name">Nombre:</label>
-                    <input type="text" id="name" name="name" required>
-                    <br>
-                    <label for="email">Correo electrónico:</label>
-                    <input type="email" id="email" name="email" required>
-                    <br>
-                    <div class="asistenciaOpcion">
-                        <label for="asistencia">Asistirá?</label>
-                        <select id="asistencia" name="asistencia">
-                        <option value="confirmado">Sí</option>
-                        <option value="no_confirmado">No</option>
-                        </select>
-                    </div>
-                        <br>
-                        <button type="submit">Enviar</button>
-                </form>       
-        </div>
+        <div class="main">
+            <div class="bg"></div>
+            <div class="bg2"></div>
+            <div class="top">
+              <div class="top-contents">
+                  <div class="user">
+                 </div>
+              </div>
+            </div>
+            <div class="content">
+              <div class="button-container">
+                <button class="button" onclick="materialClick(event)"><div class="circle animate"></div><span class="sign-in">SI</span><div class="loader"></div></button>
+                <button class="button" onclick="materialClick(event)"><div class="circle animate"></div><span class="sign-in">NO</span><div class="loader"></div></button>
+              </div>
+              <div class="controls">
+                <div class="icon">
+                  <div class="formTitle">Confirma tu asistencia</div>
+                </div>
+                <div class="inputs">
+                  <p>Nombre: </p>
+                  <input
+                    class="input">
+                    <p>Correo electrónico: </p>
+                    <input
+                      class="input" type="email">
+                </div>
+              </div>
+            </div>
+            <script src="anime.min.js"></script>
+            <script src="il.js"></script>
+          </div>
 
     </div>
     <footer class="footerContainer">
