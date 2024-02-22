@@ -56,13 +56,22 @@
             <div class="vestuario">
                 <p class="titulov">Código de vestuario</p>
                 <p><span>Mujeres:</span> Traje formal, evita el blanco </p>
-                <p><span>Hombres: </span>Traje formal, con o sin corbata. Evita combinar gris y negro,</p>
+                <p><span>Hombres: </span>Traje formal, con o sin corbata. No uses combinación de gris y negro.</p>
             </div>           
     </div>
     <div class="containerasis">
         <div class="main">
-            <div class="bg"></div>
-            <div class="bg2"></div>
+            <div class="bg">            
+            </div>
+            <div class="bg2">
+              <div class="thankyou">
+                <p class="tk">Gracias por Confirmar tu asistencia</p>
+                <p class="changeD"> Si necesitas cambiar tu decisión, solo tienes que llenar el formulario con la nueva respuesta</p>
+                <button class="button3" onclick="restart(event)">
+                  <span class="restart">Ir atrás</span>                
+                </button>
+              </div>
+              </div>
             <div class="content">
               <div class="button-container">
                 <div class="button-container1">
@@ -72,7 +81,6 @@
                   <button class="button2" onclick="materialClick2(event)"><div class="circle2"></div><span class="sign-in2">NO</span><div class="loader2"></div></button>
                 </div>
               </div>
-
               <div class="controls">
                   <div class="inputs">
                   <p class="formfrase ca">Confirma tu asistencia</p>
@@ -85,7 +93,7 @@
                 </div>
                 <p>Por favor diligencia el formulario incluso si No asistirás</p>
               </div>
-              
+
             </div>
             <script src="anime.min.js"></script>
             <script src="il.js"></script>

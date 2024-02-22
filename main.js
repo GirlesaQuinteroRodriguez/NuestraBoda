@@ -14,8 +14,14 @@ var signIn;
 var loader;
 var x;
 var y;
+var thankyou;
+var tk;
+var changeD;
 
 function materialClick1(event) {
+  thankyou = document.querySelector('.thankyou');
+  tk = document.querySelector('.tk')
+  changeD = document.querySelector('ChangeD')
   bg = document.querySelector('.bg');
   bg2 = document.querySelector('.bg2');
   topc = document.querySelector('.top');
@@ -46,7 +52,10 @@ function materialClick1(event) {
       controls.classList.add('hidden');
       bg.classList.add('no-image');
       bg2.classList.add('visible');
-      topc.classList.add('visible'); 
+      thankyou.classList.add('visible');
+      tk.classList.add('visible');
+      changeD.classList.add('visible');
+      topc.classList.add('visible');
       calendar.classList.add('visible');
     }, 1460);
     setTimeout(function() {
@@ -56,6 +65,9 @@ function materialClick1(event) {
 }
 
 function materialClick2(event) {
+  thankyou = document.querySelector('.thankyou');
+  tk = document.querySelector('.tk')
+  changeD = document.querySelector('ChangeD')
   bg = document.querySelector('.bg');
   bg2 = document.querySelector('.bg2');
   topc = document.querySelector('.top');
@@ -79,6 +91,9 @@ function materialClick2(event) {
     button2.classList.add('animate2');
     signIn2.classList.add('animate2');
     loader2.classList.add('animate2');
+    thankyou.classList.add('visible');
+    tk.classList.add('visible');
+    changeD.classList.add('visible');
     setTimeout(function() {
       loader.classList.add('animateOut2');
     }, 1000);
@@ -96,7 +111,7 @@ function materialClick2(event) {
 }
 
 
-function restart() {
+function restart(event) {
   bc1.style.zIndex = 0;
   bc2.style.zIndex = 0;
   button1.classList.remove('animate1');
@@ -116,3 +131,21 @@ function restart() {
   document.querySelectorAll('.input').forEach(input => input.value = '');
 }
 
+function restart2(event) {
+  bc1.style.zIndex = 0;
+  bc2.style.zIndex = 0;
+  button1.classList.remove('animate1');
+  button2.classList.remove('animate2');
+  signIn1.classList.remove('animate1');
+  loader1.classList.remove('animate1');
+  loader1.classList.remove('animateOut1');
+  signIn2.classList.remove('animate2');
+  loader2.classList.remove('animate2');
+  loader2.classList.remove('animateOut2');
+  controls.classList.remove('hidden');
+  topc.classList.remove('visible');
+  calendar.classList.remove('visible');
+  thankyou.classList.remove('visible');
+  content.classList.remove('removed');
+  document.querySelectorAll('.input').forEach(input => input.value = '');
+}
