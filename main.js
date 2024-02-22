@@ -91,9 +91,6 @@ function materialClick2(event) {
     button2.classList.add('animate2');
     signIn2.classList.add('animate2');
     loader2.classList.add('animate2');
-    thankyou.classList.add('visible');
-    tk.classList.add('visible');
-    changeD.classList.add('visible');
     setTimeout(function() {
       loader.classList.add('animateOut2');
     }, 1000);
@@ -101,7 +98,10 @@ function materialClick2(event) {
       controls.classList.add('hidden');
       bg.classList.add('no-image');
       bg2.classList.add('visible');
-      topc.classList.add('visible'); 
+      thankyou.classList.add('visible');
+      tk.classList.add('visible');
+      changeD.classList.add('visible');
+      topc.classList.add('visible');   
       calendar.classList.add('visible');
     }, 1460);
     setTimeout(function() {
