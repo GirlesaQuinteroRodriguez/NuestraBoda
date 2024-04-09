@@ -1,6 +1,3 @@
-var img = new Image()
-img.src = 'trees.jpg';
-
 var bg;
 var bg2;
 var topc;
@@ -9,16 +6,24 @@ var content;
 var controls;
 var circle;
 var bc;
+var bc1;
+var bc2
 var button;
-var signIn;
-var loader;
+var button1;
+var button2;
+var button3;
+var signIn1;
+var signIn2;
+var loader1;
+var loader2;
 var x;
 var y;
 var thankyou;
 var tk;
 var changeD;
 
-function materialClick1(event) {
+
+async function materialClick1(event) {
   thankyou = document.querySelector('.thankyou');
   tk = document.querySelector('.tk')
   changeD = document.querySelector('ChangeD')
@@ -35,6 +40,10 @@ function materialClick1(event) {
   loader1 = document.querySelector('.loader1');
   x = event.offsetX - circle1.offsetWidth / 2;
   y = event.offsetY - circle1.offsetHeight / 2;
+  const registerAnswer = require('./asistencia').funciones.registerAnswer;
+  const nombre = document.querySelector('input.input:nth-of-type(1)').value;
+  const email = document.querySelector('input.input:nth-of-type(2)').value;
+  await registerAnswer(true, email, nombre);
   
   circle1.classList.remove('animate1');
   circle1.style.left = x + 'px';
@@ -64,7 +73,7 @@ function materialClick1(event) {
   }, 50);
 }
 
-function materialClick2(event) {
+async function materialClick2(event) {
   thankyou = document.querySelector('.thankyou');
   tk = document.querySelector('.tk')
   changeD = document.querySelector('ChangeD')
@@ -81,6 +90,10 @@ function materialClick2(event) {
   loader2 = document.querySelector('.loader2');
   x = event.offsetX - circle2.offsetWidth / 2;
   y = event.offsetY - circle2.offsetHeight / 2;
+  const registerAnswer = require('./asistencia').funciones.registerAnswer;
+  const nombre = document.querySelector('input.input:nth-of-type(1)').value;
+  const email = document.querySelector('input.input:nth-of-type(2)').value;
+  await registerAnswer(false, email, nombre);
   
   circle2.classList.remove('animate2');
   circle2.style.left = x + 'px';
@@ -132,20 +145,41 @@ function restart(event) {
 }
 
 function restart2(event) {
-  bc1.style.zIndex = 0;
-  bc2.style.zIndex = 0;
-  button1.classList.remove('animate1');
-  button2.classList.remove('animate2');
-  signIn1.classList.remove('animate1');
-  loader1.classList.remove('animate1');
-  loader1.classList.remove('animateOut1');
-  signIn2.classList.remove('animate2');
-  loader2.classList.remove('animate2');
-  loader2.classList.remove('animateOut2');
+  // Reuse elements for clarity
+  const button1 = document.getElementById('button1');
+  const button2 = document.getElementById('button2');
+  const signIn2 = document.querySelector('.sign-in2');
+  const loader2 = document.querySelector('.loader2');
+  const signIn1 = document.querySelector('.sign-in1');
+  const loader1 = document.querySelector('.loader1');
+
+  const clickedButton = event.target.closest('.animate1, .animate2'); // Get the clicked button with either class
+  const animateClass = clickedButton ? (clickedButton.classList.contains('animate1') ? 'animate1' : 'animate2') : null;
+  console.log(animateClass)
+
+  // Get the corresponding elements to remove class from
+  const elementsToRemoveClass = [button1, signIn1, loader1, loader2, button2, signIn2, loader2]
+    .filter(element => element.classList)
+    .filter(element => {
+      const elementId = element.id;
+      const lastChar = elementId.charAt(elementId.length - 1);
+      return lastChar === animateClass[7];
+    });
+
+  // Remove relevant animation classes
+  elementsToRemoveClass.forEach(element => {
+    element.classList.remove(animateClass);
+    element.classList.remove(`animateOut${animateClass[7]}`); // Remove corresponding "animateOut" class
+  });
+
+  // Reset other elements
   controls.classList.remove('hidden');
   topc.classList.remove('visible');
   calendar.classList.remove('visible');
   thankyou.classList.remove('visible');
   content.classList.remove('removed');
+
+  // Clear input values (assuming safe selectors)
   document.querySelectorAll('.input').forEach(input => input.value = '');
 }
+ 
