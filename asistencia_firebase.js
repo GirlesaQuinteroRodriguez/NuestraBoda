@@ -56,10 +56,7 @@ async function materialClick1(event) {
   loader1 = document.querySelector('.loader1');
   x = event.offsetX - circle1.offsetWidth / 2;
   y = event.offsetY - circle1.offsetHeight / 2;
-  const registerAnswer = require('./asistencia').funciones.registerAnswer;
-  const nombre = document.querySelector('input.input:nth-of-type(1)').value;
-  const email = document.querySelector('input.input:nth-of-type(2)').value;
-  await registerAnswer(true, email, nombre);
+
   
   circle1.classList.remove('animate1');
   circle1.style.left = x + 'px';
@@ -106,10 +103,7 @@ async function materialClick2(event) {
   loader2 = document.querySelector('.loader2');
   x = event.offsetX - circle2.offsetWidth / 2;
   y = event.offsetY - circle2.offsetHeight / 2;
-  const registerAnswer = require('./asistencia').funciones.registerAnswer;
-  const nombre = document.querySelector('input.input:nth-of-type(1)').value;
-  const email = document.querySelector('input.input:nth-of-type(2)').value;
-  await registerAnswer(false, email, nombre);
+
   
   circle2.classList.remove('animate2');
   circle2.style.left = x + 'px';
