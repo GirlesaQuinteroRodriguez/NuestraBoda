@@ -1,18 +1,11 @@
 import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
-
-// TODO: Replace the following with your app's Firebase project configuration
-// See: https://support.google.com/firebase/answer/7015592
-const firebaseConfig = {
-    FIREBASE_CONFIGURATION
-};
-
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
+import { db } from './firebase.js';  // Importar db
+import { app } from './firebase.js';  
+import { analytics } from './firebase.js';  
 
 
-// Initialize Cloud Firestore and get a reference to the service
-const db = getFirestore(app);
+
 
 var bg;
 var bg2;
@@ -37,56 +30,115 @@ var y;
 var thankyou;
 var tk;
 var changeD;
+var loader1; 
+var loader2;
 
 
 async function materialClick1(event) {
-  thankyou = document.querySelector('.thankyou');
-  tk = document.querySelector('.tk')
-  changeD = document.querySelector('ChangeD')
-  bg = document.querySelector('.bg');
-  bg2 = document.querySelector('.bg2');
-  topc = document.querySelector('.top');
-  calendar = document.querySelector('.calendar');
-  content = document.querySelector('.content');
-  controls = document.querySelector('.controls');
-  circle1 = document.querySelector('.circle1');
-  bc1 = document.querySelector('.button-container1');
-  button1 = document.querySelector('.button1');
-  signIn1 = document.querySelector('.sign-in1');
-  loader1 = document.querySelector('.loader1');
-  x = event.offsetX - circle1.offsetWidth / 2;
-  y = event.offsetY - circle1.offsetHeight / 2;
+  try {
+    // Obtén los datos del formulario
+    const nombreCompleto = document.querySelector('.inputs input:first-child').value;
+    const correoElectronico = document.querySelector('.inputs input[type="email"]').value;
 
+    // Valida los datos (puedes agregar más validaciones)
+    if (!nombreCompleto || !correoElectronico) {
+      alert('Por favor, completa todos los campos.');
+      return; // Detener la ejecución si los datos no son válidos
+    }
+
+    // Lógica asíncrona (guardar en Firestore) - MOVIDA AL PRINCIPIO
+    await db.collection('invitados').add({
+      nombre: nombreCompleto,
+      correo: correoElectronico,
+      RSVP: 'SI',
+      mesa: '' // Puedes dejarlo vacío por ahora
+    });
+
+    // Feedback visual (opcional)
+    event.target.classList.add('loading'); // Agrega una clase para indicar que se está cargando
+    
+ 
+    thankyou = document.querySelector('.thankyou');
+    tk = document.querySelector('.tk')
+    changeD = document.querySelector('ChangeD')
+    bg = document.querySelector('.bg');
+    bg2 = document.querySelector('.bg2');
+    topc = document.querySelector('.top');
+    calendar = document.querySelector('.calendar');
+    content = document.querySelector('.content');
+    controls = document.querySelector('.controls');
+    circle1 = document.querySelector('.circle1');
+    bc1 = document.querySelector('.button-container1');
+    button1 = document.querySelector('.button1');
+    signIn1 = document.querySelector('.sign-in1');
+    loader1 = document.querySelector('.loader1');
+    x = event.offsetX - circle1.offsetWidth / 2;
+    y = event.offsetY - circle1.offsetHeight / 2;
   
-  circle1.classList.remove('animate1');
-  circle1.style.left = x + 'px';
-  circle1.style.top = y + 'px';
-  bc1.style.zIndex = 1;
-  setTimeout(function() {
-    circle1.classList.add('animate1');
-    button1.classList.add('animate1');
-    signIn1.classList.add('animate1');
-    loader1.classList.add('animate1');
+    
+    circle1.classList.remove('animate1');
+    circle1.style.left = x + 'px';
+    circle1.style.top = y + 'px';
+    bc1.style.zIndex = 1;
     setTimeout(function() {
-      loader.classList.add('animateOut');
-    }, 1000);
-    setTimeout(function() {
-      controls.classList.add('hidden');
-      bg.classList.add('no-image');
-      bg2.classList.add('visible');
-      thankyou.classList.add('visible');
-      tk.classList.add('visible');
-      changeD.classList.add('visible');
-      topc.classList.add('visible');
-      calendar.classList.add('visible');
-    }, 1460);
-    setTimeout(function() {
-      content.classList.add('removed')
-    }, 2000);
-  }, 50);
-}
+      circle1.classList.add('animate1');
+      button1.classList.add('animate1');
+      signIn1.classList.add('animate1');
+      loader1.classList.add('animate1');
+      setTimeout(function() {
+        loader1.classList.add('animateOut');
+      }, 1000);
+      setTimeout(function() {
+        controls.classList.add('hidden');
+        bg.classList.add('no-image');
+        bg2.classList.add('visible');
+        thankyou.classList.add('visible');
+        tk.classList.add('visible');
+        changeD.classList.add('visible');
+        topc.classList.add('visible');
+        calendar.classList.add('visible');
+      }, 1460);
+      setTimeout(function() {
+        content.classList.add('removed')
+      }, 2000);
+    }, 50);
 
+
+  } catch (error) {
+    console.error('Error al guardar la asistencia:', error);
+    alert('Hubo un error al procesar tu asistencia. Por favor, inténtalo de nuevo.');
+  } finally {
+    event.target.classList.remove('loading'); // Quita la clase de carga
+  }
+
+}
+  
 async function materialClick2(event) {
+
+  try {
+    // Obtén los datos del formulario
+    const nombreCompleto = document.querySelector('.inputs input:first-child').value;
+    const correoElectronico = document.querySelector('.inputs input[type="email"]').value;
+
+    // Valida los datos (puedes agregar más validaciones)
+    if (!nombreCompleto || !correoElectronico) {
+      alert('Por favor, completa todos los campos.');
+      return; // Detener la ejecución si los datos no son válidos
+    }
+
+    // Lógica asíncrona (guardar en Firestore) - MOVIDA AL PRINCIPIO
+    await db.collection('invitados').add({
+      nombre: nombreCompleto,
+      correo: correoElectronico,
+      RSVP: 'NO',
+      mesa: '' // Puedes dejarlo vacío por ahora
+    });
+
+    // Feedback visual (opcional)
+    event.target.classList.add('loading'); // Agrega una clase para indicar que se está cargando
+    
+    // Resto de la lógica de animaciones y transiciones
+    
   thankyou = document.querySelector('.thankyou');
   tk = document.querySelector('.tk')
   changeD = document.querySelector('ChangeD')
@@ -115,7 +167,7 @@ async function materialClick2(event) {
     signIn2.classList.add('animate2');
     loader2.classList.add('animate2');
     setTimeout(function() {
-      loader.classList.add('animateOut2');
+      loader2.classList.add('animateOut2');
     }, 1000);
     setTimeout(function() {
       controls.classList.add('hidden');
@@ -131,7 +183,17 @@ async function materialClick2(event) {
       content.classList.add('removed')
     }, 2000);
   }, 50);
+    // ... (el resto del código se mantiene igual)
+
+  } catch (error) {
+    console.error('Error al guardar la asistencia:', error);
+    alert('Hubo un error al procesar tu asistencia. Por favor, inténtalo de nuevo.');
+  } finally {
+    event.target.classList.remove('loading'); // Quita la clase de carga
+  }
+
 }
+
 
 
 function restart(event) {
@@ -192,4 +254,8 @@ function restart2(event) {
   // Clear input values (assuming safe selectors)
   document.querySelectorAll('.input').forEach(input => input.value = '');
 }
+
+export  { materialClick, materialClick2, restart, restart2 };
+ 
+
  

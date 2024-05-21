@@ -22,5 +22,10 @@ const firebaseConfig = {
 };
 
 // Initialize Firebase
+// ... (tu configuración firebaseConfig)
+
 const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
+const db = getFirestore(app); // Esta variable será global
+
+export { db, app, analytics };  // Exportar las variables db y app
