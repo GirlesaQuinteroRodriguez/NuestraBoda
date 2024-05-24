@@ -1,5 +1,3 @@
-import { initializeApp } from "firebase/app";
-import { getFirestore } from "firebase/firestore";
 import { db } from './firebase.js';  // Importar db
 import { app } from './firebase.js';  
 import { analytics } from './firebase.js';  
