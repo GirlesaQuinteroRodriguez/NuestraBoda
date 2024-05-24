@@ -253,7 +253,7 @@ function restart2(event) {
   document.querySelectorAll('.input').forEach(input => input.value = '');
 }
 
-export  { materialClick, materialClick2, restart, restart2 };
+export  { materialClick1, materialClick2, restart, restart2 };
  
 
  
