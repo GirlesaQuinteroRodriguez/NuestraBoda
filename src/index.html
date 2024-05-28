@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Girle & Sebas </title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='styles.css'>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Tangerine:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kameron:wght@400;500;600;700&family=Tangerine:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
+    <script src="firebase.js"></script> 
+    <script src="/dist/bundle.js"></script>
+
+
+  </head>
+<body>
+    <header>
+        <div class="headerLogo">
+            <img id="logo" src="./imgDesktop/logo.png" alt="logoBoda">
+        </div>
+        
+        <div class="menu">
+            <ul>
+                <li>Confirma tu asistencia</li>
+                <li>Sube fotos y videos</li>
+                <li>Fotos oficiales</li>
+                <li>Busca tu mesa</li>
+                <li>Mensajitos</li>
+            </ul>
+        </div>        
+    </header>
+    <div class="invite">
+        <img src="./imgDesktop/arcleft.png" alt="arcleft">
+        <div class="invitecenter">
+            <p>Sebastian Palacio Moreno</p>
+            <span>&</span>
+            <P>Girlesa Quintero Rodriguez</P>
+        </div>
+        <img src="./imgDesktop/arcright.png" alt="arcright">
+    </div>
+
+    <div class="segundaParte">
+        <img id="leftG" src="./imgDesktop/side2.png" alt="leftbanner">
+        <img id="rightG"src="./imgDesktop/side3.png" alt="rightsidebanner">
+        <div class="mensaje">
+            <p class="explicacion">Nuestro Padre Celestial nos ha permitido conocer cuánto nos ama antes y durante nuestro noviazgo, ahora como familia queremos ser ese instrumento de Dios para  seguir conociendo y enseñando su amor.</p>  
+            <p class="verse"><span>2 Tesalonicenses 3:5 :</span> Que el Señor les guíe el corazón a un entendimiento total y a una expresión plena del amor de Dios, y a la perseverancia con paciencia que proviene de Cristo.</p>
+            </div>
+        
+            <div class="datos">
+                <p class="fecha">Domingo, 17 de noviembre de 2024</p>
+                <p>Bariloche Eventos, Parcelación El Limonar. Copacabana Antioquia</p>
+                <p>3:00 p.m</p>
+            </div>
+            <div class="vestuario">
+                <p class="titulov">Código de vestuario</p>
+                <p><span>Mujeres:</span> Traje formal, evita blanco o marfil.</p>
+                <p><span>Hombres: </span>Traje formal, con o sin corbata. No uses combinación de gris y negro.</p>
+            </div>           
+    </div>
+    <div class="containerasis">
+        <div class="main">
+            <div class="bg">            
+            </div>
+            <div class="bg2">
+              <div class="thankyou">
+                <p class="tk">Gracias por Confirmar tu asistencia</p>
+                <p class="changeD"> Si necesitas cambiar tu decisión, solo tienes que llenar el formulario con la nueva respuesta.</p>
+                <p class="changeD2"> Recuerda que la asistencia se diligencia por cada invitado.</p>
+                <button class="button3" onclick="restart2(event)">
+                  <span class="restart">Ir atrás</span>                
+                </button>
+              </div>
+              </div>
+            <div class="content">
+              <div class="button-container">
+                <div class="button-container1">
+                  <button class="button1"><div class="circle1"></div><span class="sign-in1">SI</span><div class="loader1"></div></button>
+                </div>
+                <div class="button-container2">
+                  <button class="button2"><div class="circle2"></div><span class="sign-in2">NO</span><div class="loader2"></div></button>
+                </div>
+              </div>
+              <div class="controls">
+                  <div class="inputs">
+                  <p class="formfrase ca">Confirma tu asistencia</p>
+                  <p class="formfrase">Nombre Completo: </p>
+                  <input
+                    class="input">
+                    <p class="formfrase">Correo electrónico: </p>
+                    <input
+                      class="input" type="email">
+                </div>
+                <p>Por favor diligencia el formulario incluso si No asistirás</p>
+              </div>
+
+            </div>
+          </div>
+
+    </div>
+    <footer class="footerContainer">
+        <img src="./imgDesktop/fo4.png" alt="footerimage">
+    </footer>
+    <script src="asistencia_firebase.js" defer></script> 
+</body>
+
+
+</html>
