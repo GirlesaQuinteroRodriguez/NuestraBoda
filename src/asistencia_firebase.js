@@ -36,8 +36,8 @@ async function materialClick1(event) {
   try {
 
     // Obtén los datos del formulario
-    const nombreCompleto = document.querySelector('.inputs input:first-child').value;
-    const correoElectronico = document.querySelector('.inputs input[type="email"]').value;
+    const nombreCompleto = document.querySelector('.nombreCompletoInput').value;
+    const correoElectronico = document.querySelector('.emailInput').value;
 
     // Valida los datos (puedes agregar más validaciones)
     if (!nombreCompleto || !correoElectronico) {
@@ -118,8 +118,8 @@ async function materialClick2(event) {
 
   try {
     // Obtén los datos del formulario
-    const nombreCompleto = document.querySelector('.inputs input:first-child').value;
-    const correoElectronico = document.querySelector('.inputs input[type="email"]').value;
+    const nombreCompleto = document.querySelector('.nombreCompletoInput').value;
+    const correoElectronico = document.querySelector('.emailInput').value;
 
     // Valida los datos (puedes agregar más validaciones)
     if (!nombreCompleto || !correoElectronico) {
