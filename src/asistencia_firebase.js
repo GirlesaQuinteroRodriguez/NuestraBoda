@@ -24,39 +24,80 @@ var changeD;
 var loader1; 
 var loader2;
 
-document.addEventListener('DOMContentLoaded', () => { 
-  const button1 = document.querySelector('.button1');
-  const button2 = document.querySelector('.button2');
 
-  button1.addEventListener('click', materialClick1);
-  button2.addEventListener('click', materialClick2);
+document.addEventListener('DOMContentLoaded', () => { 
+  const buttonContainer1 = document.querySelector('.button-container1'); // Contenedor del botón "Sí"
+  const buttonContainer2 = document.querySelector('.button-container2'); // Contenedor del botón "No"
+
+  buttonContainer1.addEventListener('click', materialClick1); // Escucha en el contenedor
+  buttonContainer2.addEventListener('click', materialClick2);
+
+  const buttonContainer = document.querySelector('.button-container'); // Contenedor de los botones
+
+  buttonContainer.addEventListener('click', handleButtonClick); // Manejador de clics para el contenedor
 });
 
-async function materialClick1(event) {
-  try {
+function handleButtonClick(event) {
+  const target = event.target;
 
-    // Obtén los datos del formulario
+  
+
+  if (target.classList.contains('button1')) {
+    materialClick1(); // Llama a la función correspondiente al botón "Sí"
+  } else if (target.classList.contains('button2')) {
+    materialClick2(); // Llama a la función correspondiente al botón "No"
+  }
+};
+
+function guardarAsistencia(nombre, correo, rsvp) {
+  const invitadoRef = firebase.firestore().collection("invitados").doc(nombre);
+  const asistenciaRef = invitadoRef.collection("asistencia").doc();
+
+  asistenciaRef.set({
+    nombreCompleto: nombre,
+    correo: correo,
+    rsvp: rsvp,
+    mesa: null,
+    fecha: firebase.firestore.FieldValue.serverTimestamp()
+  })
+    .then(() => {
+      alert("¡Gracias por confirmar tu asistencia!");
+      // Puedes agregar aquí lógica adicional después de guardar la asistencia
+    })
+    .catch((error) => {
+      console.error("Error al guardar la asistencia:", error);
+      alert("Hubo un error al guardar tu asistencia. Por favor inténtalo de nuevo.");
+    });
+}
+
+async function materialClick1(event) {
+  const buttonClicked = event.target.closest('.button1');
+
+  // Verificar si se encontró un botón
+  if (!buttonClicked) {
+    return; // Salir si el clic no fue en el botón o en algún elemento dentro de él
+  }
+
+  try {
+// Aquí // Obtén los datos del formulario
     const nombreCompleto = document.querySelector('.nombreCompletoInput').value;
     const correoElectronico = document.querySelector('.emailInput').value;
+    const rsvp = true; // Asumiendo que materialClick1 es para confirmar asistencia
+
 
     // Valida los datos (puedes agregar más validaciones)
     if (!nombreCompleto || !correoElectronico) {
       alert('Por favor, completa todos los campos.');
       return; // Detener la ejecución si los datos no son válidos
     }
-    console.log("Antes de guardar en Firestore");
-    
+
     // Lógica asíncrona (guardar en Firestore) - MOVIDA AL PRINCIPIO
-    await firebase.firestore().collection('invitados').add({
-      nombre: nombreCompleto,
-      correo: correoElectronico,
-      RSVP: 'SI',
-      mesa: '' // Puedes dejarlo vacío por ahora
-    });
-    console.log("Después de guardar en Firestore");
+   await guardarAsistencia(nombreCompleto, correoElectronico, rsvp); // Llama a la función para guardar la asistencia
+      
 
     // Feedback visual (opcional)
-    event.target.classList.add('loading'); // Agrega una clase para indicar que se está cargando
+
+    buttonClicked.classList.add('loading'); // Agrega una clase para indicar que se está cargando
     
  
     thankyou = document.querySelector('.thankyou');
@@ -104,22 +145,29 @@ async function materialClick1(event) {
       }, 2000);
     }, 50);
 
-
   } catch (error) {
     console.error('Error al guardar la asistencia:', error);
     alert('Hubo un error al procesar tu asistencia. Por favor, inténtalo de nuevo.');
   } finally {
-    event.target.classList.remove('loading'); // Quita la clase de carga
+    if (buttonClicked) {
+      buttonClicked.classList.remove('loading');
   }
 
 }
   
 async function materialClick2(event) {
+  const buttonClicked = event.target.closest('.button2');
+
+  // Verificar si se encontró un botón
+  if (!buttonClicked) {
+    return; // Salir si el clic no fue en el botón o en algún elemento dentro de él
+  }
 
   try {
     // Obtén los datos del formulario
     const nombreCompleto = document.querySelector('.nombreCompletoInput').value;
     const correoElectronico = document.querySelector('.emailInput').value;
+    const rsvp = false; // Asumiendo que materialClick1 es para confirmar asistencia
 
     // Valida los datos (puedes agregar más validaciones)
     if (!nombreCompleto || !correoElectronico) {
@@ -127,13 +175,8 @@ async function materialClick2(event) {
       return; // Detener la ejecución si los datos no son válidos
     }
 
-    // Lógica asíncrona (guardar en Firestore) - MOVIDA AL PRINCIPIO
-    await firebase.firestore().collection('invitados').add({
-      nombre: nombreCompleto,
-      correo: correoElectronico,
-      RSVP: 'NO',
-      mesa: '' // Puedes dejarlo vacío por ahora
-    });
+   await guardarAsistencia(nombreCompleto, correoElectronico, rsvp); // Llama a la función para guardar la asistencia
+
 
     // Feedback visual (opcional)
     event.target.classList.add('loading'); // Agrega una clase para indicar que se está cargando
