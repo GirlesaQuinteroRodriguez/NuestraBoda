@@ -34,20 +34,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const buttonContainer = document.querySelector('.button-container'); // Contenedor de los botones
 
-  buttonContainer.addEventListener('click', handleButtonClick); // Manejador de clics para el contenedor
+
 });
 
-function handleButtonClick(event) {
-  const target = event.target;
-
-  
-
-  if (target.classList.contains('button1')) {
-    materialClick1(); // Llama a la función correspondiente al botón "Sí"
-  } else if (target.classList.contains('button2')) {
-    materialClick2(); // Llama a la función correspondiente al botón "No"
-  }
-};
 
 function guardarAsistencia(nombre, correo, rsvp) {
   const invitadoRef = firebase.firestore().collection("invitados").doc(nombre);
@@ -153,7 +142,7 @@ async function materialClick1(event) {
       buttonClicked.classList.remove('loading');
   }
 
-}
+}}
   
 async function materialClick2(event) {
   const buttonClicked = event.target.closest('.button2');
