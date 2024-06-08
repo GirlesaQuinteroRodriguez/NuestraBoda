@@ -37,10 +37,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
 });
 
-
 function guardarAsistencia(nombre, correo, rsvp) {
   const invitadoRef = firebase.firestore().collection("invitados").doc(nombre);
-  const asistenciaRef = invitadoRef.collection("asistencia").doc();
+  const asistenciaRef = invitadoRef.collection("asistencia").doc(); // Crea un documento dentro de la subcolección
 
   asistenciaRef.set({
     nombreCompleto: nombre,
@@ -49,18 +48,17 @@ function guardarAsistencia(nombre, correo, rsvp) {
     mesa: null,
     fecha: firebase.firestore.FieldValue.serverTimestamp()
   })
-    .then(() => {
-      alert("¡Gracias por confirmar tu asistencia!");
-      // Puedes agregar aquí lógica adicional después de guardar la asistencia
-    })
-    .catch((error) => {
-      console.error("Error al guardar la asistencia:", error);
-      alert("Hubo un error al guardar tu asistencia. Por favor inténtalo de nuevo.");
-    });
+  .then(() => {
+    alert("¡Gracias por confirmar tu asistencia!");
+  })
+  .catch((error) => {
+    console.error("Error al guardar la asistencia:", error);
+    alert("Hubo un error al guardar tu asistencia. Por favor inténtalo de nuevo.");
+  });
 }
 
 async function materialClick1(event) {
-  const buttonClicked = event.target.closest('.button1');
+  const buttonClicked = event.currentTarget; 
 
   // Verificar si se encontró un botón
   if (!buttonClicked) {
@@ -82,9 +80,7 @@ async function materialClick1(event) {
 
     // Lógica asíncrona (guardar en Firestore) - MOVIDA AL PRINCIPIO
    await guardarAsistencia(nombreCompleto, correoElectronico, rsvp); // Llama a la función para guardar la asistencia
-      
-
-    // Feedback visual (opcional)
+  
 
     buttonClicked.classList.add('loading'); // Agrega una clase para indicar que se está cargando
     
@@ -145,8 +141,7 @@ async function materialClick1(event) {
 }}
   
 async function materialClick2(event) {
-  const buttonClicked = event.target.closest('.button2');
-
+  const buttonClicked = event.currentTarget; 
   // Verificar si se encontró un botón
   if (!buttonClicked) {
     return; // Salir si el clic no fue en el botón o en algún elemento dentro de él
@@ -165,7 +160,7 @@ async function materialClick2(event) {
     }
 
    await guardarAsistencia(nombreCompleto, correoElectronico, rsvp); // Llama a la función para guardar la asistencia
-
+  
 
     // Feedback visual (opcional)
     event.target.classList.add('loading'); // Agrega una clase para indicar que se está cargando
